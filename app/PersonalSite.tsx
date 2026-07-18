@@ -1,4 +1,5 @@
 import { ParticleField } from "./ParticleField";
+import { ForecastEngine } from "./ForecastEngine";
 
 type Language = "zh" | "en";
 
@@ -231,21 +232,9 @@ export function PersonalSite({ language }: { language: Language }) {
               </div>
             </div>
 
-            <figure className="hero-visual fade-up" aria-label={copy.hero.cardAria}>
-              <div className="orbit orbit-outer" aria-hidden="true"><i /><i /><i /></div>
-              <div className="orbit orbit-middle" aria-hidden="true"><i /><i /></div>
-              <div className="orbit orbit-inner" aria-hidden="true" />
-              <div className="portrait-field">
-                <div className="portrait-aura" aria-hidden="true" />
-                <img src="/heshu-avatar.jpg" alt={language === "zh" ? "贺叔 AI 头像" : "Portrait of Heshu AI"} width="1024" height="1024" fetchPriority="high" />
-                <div className="portrait-mesh" aria-hidden="true" />
-                <div className="signal-slice" aria-hidden="true" />
-              </div>
-              <div className="telemetry telemetry-top" aria-hidden="true"><span>FFM / 01</span><strong>FORECAST SIGNAL</strong></div>
-              <div className="telemetry telemetry-side" aria-hidden="true"><span>CALIBRATED</span><strong>82.4%</strong></div>
-              <div className="telemetry telemetry-bottom" aria-hidden="true"><span>TORCHCAST.AI</span><strong>BUILDING NOW</strong></div>
-              <figcaption>{language === "zh" ? "从真实工具，到预测未来" : "From real tools to forecasting the future"}</figcaption>
-            </figure>
+            <div className="hero-visual fade-up">
+              <ForecastEngine language={language} />
+            </div>
           </div>
           <div className="hero-ticker" aria-hidden="true">
             <span>AI GEAR</span><i />
