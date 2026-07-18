@@ -976,6 +976,44 @@ a {
   text-transform: uppercase;
 }
 
+.creator-visual {
+  min-height: 720px;
+}
+
+.creator-visual .portrait-field {
+  width: min(40vw, 540px);
+}
+
+.creator-visual .portrait-field img {
+  filter: saturate(0.82) contrast(1.1) brightness(0.91);
+}
+
+.creator-visual .orbit-outer {
+  width: min(53vw, 750px);
+}
+
+.creator-visual .orbit-middle {
+  width: min(44vw, 630px);
+}
+
+.creator-visual .orbit-inner {
+  width: min(38vw, 550px);
+}
+
+.creator-visual .telemetry-top {
+  top: 11%;
+  right: 3%;
+}
+
+.creator-visual .telemetry-side {
+  left: -2%;
+}
+
+.creator-visual .telemetry-bottom {
+  right: 0;
+  bottom: 11%;
+}
+
 .hero-ticker {
   position: absolute;
   z-index: 8;
@@ -1958,6 +1996,14 @@ h1 {
     height: 610px;
   }
 
+  .creator-visual .portrait-field {
+    width: min(46vw, 480px);
+  }
+
+  .creator-visual .orbit-outer { width: min(64vw, 660px); }
+  .creator-visual .orbit-middle { width: min(55vw, 570px); }
+  .creator-visual .orbit-inner { width: min(48vw, 500px); }
+
   .portrait-field {
     width: min(39vw, 410px);
   }
@@ -2117,6 +2163,22 @@ h1 {
     left: 8%;
     font-size: 8px;
   }
+
+  .creator-visual {
+    min-height: 590px;
+  }
+
+  .creator-visual .portrait-field {
+    width: min(88vw, 390px);
+  }
+
+  .creator-visual .orbit-outer { width: min(132vw, 560px); }
+  .creator-visual .orbit-middle { width: min(112vw, 485px); }
+  .creator-visual .orbit-inner { width: min(96vw, 420px); }
+
+  .creator-visual .telemetry-top { right: 18%; }
+  .creator-visual .telemetry-side { left: 15%; }
+  .creator-visual .telemetry-bottom { right: 15%; }
 
   .portrait-field {
     width: min(76vw, 350px);

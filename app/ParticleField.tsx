@@ -15,9 +15,33 @@ type Particle = {
   phase: number;
 };
 
+type MathFragment = {
+  x: number;
+  y: number;
+  vx: number;
+  alpha: number;
+  size: number;
+  text: string;
+  phase: number;
+};
+
 const TARGET_FPS = 30;
 const FRAME_INTERVAL = 1000 / TARGET_FPS;
 const CONNECTION_DISTANCE = 138;
+const FORMULAS = [
+  "P(H|E)",
+  "P(E|H)",
+  "P(H)",
+  "LR(E)",
+  "Δp +4.3%",
+  "37% → 43%",
+  "BRIER ↓",
+  "CALIBRATED",
+  "Σ wᵢpᵢ",
+  "AI × SIGNAL",
+  "± σ",
+  "E₁  E₂  E₃",
+];
 
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,6 +54,7 @@ export function ParticleField() {
 
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let particles: Particle[] = [];
+    let fragments: MathFragment[] = [];
     let width = 0;
     let height = 0;
     let animationFrame = 0;
@@ -48,8 +73,8 @@ export function ParticleField() {
       particles = Array.from({ length: count }, (_, index) => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: Math.random() * 0.42 + 0.16,
-        vy: Math.random() * 0.24 + 0.06,
+        vx: Math.random() * 0.42 + 0.2,
+        vy: (Math.random() - 0.5) * 0.08,
         radius: Math.random() * 1.55 + 0.7,
         alpha: Math.random() * 0.38 + 0.5,
         color: index % 9 === 0 ? "mint" : index % 3 === 0 ? "blue" : "cyan",
@@ -57,10 +82,53 @@ export function ParticleField() {
         comet: index < (width < 720 ? 5 : 11),
         phase: Math.random() * Math.PI * 2,
       }));
+
+      const fragmentCount = width < 720 ? 7 : 15;
+      fragments = Array.from({ length: fragmentCount }, (_, index) => ({
+        x: Math.random() * width,
+        y: height * (0.1 + Math.random() * 0.78),
+        vx: Math.random() * 0.32 + 0.18,
+        alpha: Math.random() * 0.12 + 0.1,
+        size: Math.random() * 4 + (index % 4 === 0 ? 13 : 9),
+        text: FORMULAS[index % FORMULAS.length],
+        phase: Math.random() * Math.PI * 2,
+      }));
     };
 
     const draw = (move: boolean, time: number) => {
       context.clearRect(0, 0, width, height);
+
+      for (let track = 0; track < 3; track += 1) {
+        const baseline = height * (0.25 + track * 0.2);
+        const amplitude = 12 + track * 5;
+        context.globalAlpha = 0.08 + track * 0.018;
+        context.strokeStyle = track === 1 ? "#4b7cff" : "#50f2ff";
+        context.lineWidth = track === 0 ? 1.1 : 0.7;
+        context.beginPath();
+        for (let x = -20; x <= width + 20; x += 12) {
+          const y = baseline
+            + Math.sin(x * (0.009 + track * 0.002) - time * (0.00065 + track * 0.00014)) * amplitude
+            + Math.sin(x * 0.0028 + time * 0.00031) * 9;
+          if (x === -20) context.moveTo(x, y);
+          else context.lineTo(x, y);
+        }
+        context.stroke();
+      }
+
+      for (const fragment of fragments) {
+        if (move) {
+          fragment.x += fragment.vx;
+          if (fragment.x > width + 130) fragment.x = -160;
+        }
+        const floatY = fragment.y + Math.sin(time / 1200 + fragment.phase) * 5;
+        const liveText = fragment.text === "37% → 43%"
+          ? `${(42 + Math.sin(time / 1500 + fragment.phase) * 7).toFixed(1)}%`
+          : fragment.text;
+        context.globalAlpha = fragment.alpha;
+        context.fillStyle = fragment.text.includes("AI") ? "#8dffda" : fragment.text.includes("Δ") ? "#8f7cff" : "#78dbe7";
+        context.font = `500 ${fragment.size}px monospace`;
+        context.fillText(liveText, fragment.x, floatY);
+      }
 
       for (let i = 0; i < particles.length; i += 1) {
         const first = particles[i];
@@ -95,13 +163,13 @@ export function ParticleField() {
 
         const color = colorFor(particle);
         if (particle.comet) {
-          const trail = 24 + Math.sin(time / 900 + particle.phase) * 10;
+          const trail = 30 + Math.sin(time / 900 + particle.phase) * 12;
           context.globalAlpha = particle.alpha * 0.42;
           context.strokeStyle = color;
           context.lineWidth = particle.radius * 0.7;
           context.beginPath();
           context.moveTo(particle.x, particle.y);
-          context.lineTo(particle.x - trail, particle.y - trail * 0.36);
+          context.lineTo(particle.x - trail, particle.y - particle.vy * 42);
           context.stroke();
         }
 

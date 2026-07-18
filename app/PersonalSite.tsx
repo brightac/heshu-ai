@@ -1,5 +1,4 @@
 import { ParticleField } from "./ParticleField";
-import { ForecastEngine } from "./ForecastEngine";
 
 type Language = "zh" | "en";
 
@@ -15,7 +14,7 @@ const content = {
     hero: {
       eyebrow: "AI Gear · Real Tests · Building the Future",
       title: "技术人的",
-      titleAccent: "AI 装备师。",
+      titleAccent: "AI 装备师",
       introLead: "贺叔 AI",
       intro:
         "真用过，真演示，帮技术人、职场人和一人公司选 AI 装备、避坑省钱。我不贩卖焦虑，只分享自己跑过的机器、工作流和真实成本。",
@@ -110,7 +109,7 @@ const content = {
     hero: {
       eyebrow: "AI Gear · Real Tests · Building the Future",
       title: "The AI gear guide",
-      titleAccent: "for technical people.",
+      titleAccent: "for technical people",
       introLead: "Heshu AI",
       intro:
         "I use it, test it, and show the real workflow—so technical professionals, knowledge workers, and solo builders can choose AI gear with fewer costly mistakes.",
@@ -232,9 +231,21 @@ export function PersonalSite({ language }: { language: Language }) {
               </div>
             </div>
 
-            <div className="hero-visual fade-up">
-              <ForecastEngine language={language} />
-            </div>
+            <figure className="hero-visual creator-visual fade-up" aria-label={copy.hero.cardAria}>
+              <div className="orbit orbit-outer" aria-hidden="true"><i /><i /><i /></div>
+              <div className="orbit orbit-middle" aria-hidden="true"><i /><i /></div>
+              <div className="orbit orbit-inner" aria-hidden="true" />
+              <div className="portrait-field">
+                <div className="portrait-aura" aria-hidden="true" />
+                <img src="/heshu-avatar.jpg" alt={language === "zh" ? "贺叔 AI 头像" : "Portrait of Heshu AI"} width="1024" height="1024" fetchPriority="high" />
+                <div className="portrait-mesh" aria-hidden="true" />
+                <div className="signal-slice" aria-hidden="true" />
+              </div>
+              <div className="telemetry telemetry-top" aria-hidden="true"><span>CREATOR / 01</span><strong>HESHU AI</strong></div>
+              <div className="telemetry telemetry-side" aria-hidden="true"><span>REAL TESTS</span><strong>FIELD NOTES</strong></div>
+              <div className="telemetry telemetry-bottom" aria-hidden="true"><span>TORCHCAST.AI</span><strong>BUILDING FFM</strong></div>
+              <figcaption>{language === "zh" ? "个人品牌 · AI 装备实测 · 一人公司" : "Personal brand · AI field tests · Solo company"}</figcaption>
+            </figure>
           </div>
           <div className="hero-ticker" aria-hidden="true">
             <span>AI GEAR</span><i />
