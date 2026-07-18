@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 const title = "贺叔 AI｜技术人的 AI 装备师";
 const description =
-  "真用过，真演示。贺叔 AI 帮技术人、职场人和一人公司选 AI 装备、避坑省钱。";
+  "真用过，真演示。贺叔 AI 帮技术人选 AI 装备、避坑省钱；正在 Torchcast.AI 推进 FFM——Forecast Foundation Model。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
