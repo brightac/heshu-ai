@@ -217,42 +217,41 @@ export function PersonalSite({ language }: { language: Language }) {
       </header>
 
       <main id="top">
-        <section className="shell hero-poster" aria-labelledby="hero-title">
-          <div className="poster-media fade-up">
-            <img
-              className="hero-art"
-              src="/og.png"
-              alt={language === "zh" ? "贺叔 AI 与 Torchcast.AI、FFM 的星空主题主视觉" : "Heshu AI, Torchcast.AI, and FFM against a cinematic starfield"}
-              width="1200"
-              height="630"
-              fetchPriority="high"
-            />
-            <div className="poster-vignette" aria-hidden="true" />
-            <div className="starfield starfield-far" aria-hidden="true" />
-            <div className="starfield starfield-near" aria-hidden="true" />
-            <ParticleField />
-            <div className="light-orb light-orb-one" aria-hidden="true" />
-            <div className="light-orb light-orb-two" aria-hidden="true" />
-            <div className="hero-beam hero-beam-horizontal" aria-hidden="true" />
-            <div className="hero-beam hero-beam-diagonal" aria-hidden="true" />
-            <div className="poster-hud" aria-hidden="true">
-              <span>FFM / LIVE SIGNAL</span>
-              <i />
-              <span>35.6762° N</span>
-            </div>
-          </div>
-
-          <div className="hero-dock fade-up">
-            <div className="hero-dock-copy">
+        <section className="hero-stage" aria-labelledby="hero-title">
+          <ParticleField />
+          <div className="hero-grid shell">
+            <div className="hero-copy fade-up">
               <p className="eyebrow">{copy.hero.eyebrow}</p>
-              <h1 id="hero-title" className="mobile-hero-title">{copy.hero.title}<span className="gradient">{copy.hero.titleAccent}</span></h1>
-              <p className="hero-dock-intro"><strong>{copy.hero.introLead}</strong>. {copy.hero.intro}</p>
+              <h1 id="hero-title"><span>{copy.hero.title}</span><span className="gradient">{copy.hero.titleAccent}</span></h1>
+              <p className="intro"><strong>{copy.hero.introLead}</strong>. {copy.hero.intro}</p>
               <a className="venture-note" href="#venture"><span aria-hidden="true">◈</span>{copy.hero.ventureNote}</a>
+              <div className="actions" aria-label={language === "zh" ? "主要行动" : "Primary actions"}>
+                <a className="btn primary" href="mailto:cranelee@gmail.com?subject=Heshu%20AI">{copy.hero.primaryAction} <span aria-hidden="true">↗</span></a>
+                <a className="btn secondary" href="#works">{copy.hero.secondaryAction} <span aria-hidden="true">↓</span></a>
+              </div>
             </div>
-            <div className="actions" aria-label={language === "zh" ? "主要行动" : "Primary actions"}>
-              <a className="btn primary" href="mailto:cranelee@gmail.com?subject=Heshu%20AI">{copy.hero.primaryAction} <span aria-hidden="true">↗</span></a>
-              <a className="btn secondary" href="#works">{copy.hero.secondaryAction} <span aria-hidden="true">↓</span></a>
-            </div>
+
+            <figure className="hero-visual fade-up" aria-label={copy.hero.cardAria}>
+              <div className="orbit orbit-outer" aria-hidden="true"><i /><i /><i /></div>
+              <div className="orbit orbit-middle" aria-hidden="true"><i /><i /></div>
+              <div className="orbit orbit-inner" aria-hidden="true" />
+              <div className="portrait-field">
+                <div className="portrait-aura" aria-hidden="true" />
+                <img src="/heshu-avatar.jpg" alt={language === "zh" ? "贺叔 AI 头像" : "Portrait of Heshu AI"} width="1024" height="1024" fetchPriority="high" />
+                <div className="portrait-mesh" aria-hidden="true" />
+                <div className="signal-slice" aria-hidden="true" />
+              </div>
+              <div className="telemetry telemetry-top" aria-hidden="true"><span>FFM / 01</span><strong>FORECAST SIGNAL</strong></div>
+              <div className="telemetry telemetry-side" aria-hidden="true"><span>CALIBRATED</span><strong>82.4%</strong></div>
+              <div className="telemetry telemetry-bottom" aria-hidden="true"><span>TORCHCAST.AI</span><strong>BUILDING NOW</strong></div>
+              <figcaption>{language === "zh" ? "从真实工具，到预测未来" : "From real tools to forecasting the future"}</figcaption>
+            </figure>
+          </div>
+          <div className="hero-ticker" aria-hidden="true">
+            <span>AI GEAR</span><i />
+            <span>REAL TESTS</span><i />
+            <span>TORCHCAST.AI</span><i />
+            <span>FORECAST FOUNDATION MODEL</span>
           </div>
         </section>
 
@@ -293,10 +292,10 @@ export function PersonalSite({ language }: { language: Language }) {
           </div>
         </section>
 
-        <section className="shell experience" id="works" aria-labelledby="works-title">
+        <section className="shell works-section" id="works" aria-labelledby="works-title">
           <div className="section-heading experience-heading"><p className="section-kicker">{copy.works.kicker}</p><h2 id="works-title">{copy.works.title}</h2></div>
-          <div className="experience-list">
-            {copy.works.items.map(([index, title, platform, description, tags]) => <article className="role" key={title}><div className="role-index">{index}</div><div><h3>{title}</h3><p className="role-title">{platform}</p></div><div className="role-detail"><p>{description}</p><ul aria-label={`${title} tags`}>{tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></div></article>)}
+          <div className="works-grid">
+            {copy.works.items.map(([index, title, platform, description, tags]) => <article className="work-card" key={title}><div className="work-index">{index}</div><h3>{title}</h3><p className="work-platform">{platform}</p><p className="work-description">{description}</p><ul aria-label={`${title} tags`}>{tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></article>)}
           </div>
         </section>
 

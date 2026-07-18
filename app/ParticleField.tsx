@@ -15,9 +15,9 @@ type Particle = {
   phase: number;
 };
 
-const TARGET_FPS = 24;
+const TARGET_FPS = 30;
 const FRAME_INTERVAL = 1000 / TARGET_FPS;
-const CONNECTION_DISTANCE = 126;
+const CONNECTION_DISTANCE = 138;
 
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -44,17 +44,17 @@ export function ParticleField() {
     };
 
     const makeParticles = () => {
-      const count = width < 720 ? 28 : Math.min(58, Math.max(38, Math.floor(width / 26)));
+      const count = width < 720 ? 42 : Math.min(84, Math.max(54, Math.floor(width / 19)));
       particles = Array.from({ length: count }, (_, index) => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: Math.random() * 0.3 + 0.14,
-        vy: Math.random() * 0.16 + 0.05,
+        vx: Math.random() * 0.42 + 0.16,
+        vy: Math.random() * 0.24 + 0.06,
         radius: Math.random() * 1.55 + 0.7,
         alpha: Math.random() * 0.38 + 0.5,
         color: index % 9 === 0 ? "mint" : index % 3 === 0 ? "blue" : "cyan",
-        beacon: index < (width < 720 ? 3 : 6),
-        comet: index < (width < 720 ? 3 : 7),
+        beacon: index < (width < 720 ? 4 : 8),
+        comet: index < (width < 720 ? 5 : 11),
         phase: Math.random() * Math.PI * 2,
       }));
     };
