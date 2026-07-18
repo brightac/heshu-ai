@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,32 +14,31 @@ const geistMono = Geist_Mono({
 
 const title = "贺叔 AI｜技术人的 AI 装备师";
 const description =
-  "真用过，真演示。贺叔 AI 帮技术人选 AI 装备、避坑省钱；正在 Torchcast.AI 推进 FFM——Forecast Foundation Model。";
+  "只讲真用过的 AI 装备，只说值不值得装。真实评测、OpenClaw 工作流，以及从免费开源到落地答疑的产品。";
+const publicBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://heshu-ai.cranelee.chatgpt.site";
+const siteUrl = `${siteOrigin}${publicBase}/`;
+const socialImage = `${siteOrigin}${publicBase}/og.png`;
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/og.png`;
-
-  return {
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      locale: "zh_CN",
-      images: [{ url: socialImage, width: 1200, height: 630, alt: "贺叔 AI：技术人的 AI 装备师" }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [socialImage],
-    },
-  };
-}
+    url: siteUrl,
+    type: "website",
+    locale: "zh_CN",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "贺叔 AI：技术人的 AI 装备师" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [socialImage],
+  },
+};
 
 export default function RootLayout({
   children,
