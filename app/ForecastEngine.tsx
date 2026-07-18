@@ -102,6 +102,7 @@ export function ForecastEngine({ language }: { language: Language }) {
     let width = 0;
     let height = 0;
     let animationFrame = 0;
+    let resizeFrame = 0;
     let lastFrame = 0;
     let cycleStart = performance.now();
     let running = false;
@@ -265,6 +266,11 @@ export function ForecastEngine({ language }: { language: Language }) {
       draw(performance.now(), !motionPreference.matches);
     };
 
+    const requestResize = () => {
+      window.cancelAnimationFrame(resizeFrame);
+      resizeFrame = window.requestAnimationFrame(resize);
+    };
+
     const handleVisibility = () => {
       if (document.hidden) stop();
       else start();
@@ -277,7 +283,7 @@ export function ForecastEngine({ language }: { language: Language }) {
       } else start();
     };
 
-    const resizeObserver = new ResizeObserver(resize);
+    const resizeObserver = new ResizeObserver(requestResize);
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       inViewport = entry.isIntersecting;
       if (inViewport) start();
@@ -293,6 +299,7 @@ export function ForecastEngine({ language }: { language: Language }) {
 
     return () => {
       stop();
+      window.cancelAnimationFrame(resizeFrame);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       document.removeEventListener("visibilitychange", handleVisibility);
