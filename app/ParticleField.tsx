@@ -11,12 +11,13 @@ type Particle = {
   alpha: number;
   color: "cyan" | "blue" | "mint";
   beacon: boolean;
+  comet: boolean;
   phase: number;
 };
 
-const TARGET_FPS = 20;
+const TARGET_FPS = 24;
 const FRAME_INTERVAL = 1000 / TARGET_FPS;
-const CONNECTION_DISTANCE = 118;
+const CONNECTION_DISTANCE = 126;
 
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -43,16 +44,17 @@ export function ParticleField() {
     };
 
     const makeParticles = () => {
-      const count = width < 720 ? 22 : Math.min(46, Math.max(30, Math.floor(width / 32)));
+      const count = width < 720 ? 28 : Math.min(58, Math.max(38, Math.floor(width / 26)));
       particles = Array.from({ length: count }, (_, index) => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: (Math.random() - 0.5) * 0.28,
+        vx: Math.random() * 0.3 + 0.14,
+        vy: Math.random() * 0.16 + 0.05,
         radius: Math.random() * 1.55 + 0.7,
         alpha: Math.random() * 0.38 + 0.5,
         color: index % 9 === 0 ? "mint" : index % 3 === 0 ? "blue" : "cyan",
-        beacon: index < (width < 720 ? 2 : 4),
+        beacon: index < (width < 720 ? 3 : 6),
+        comet: index < (width < 720 ? 3 : 7),
         phase: Math.random() * Math.PI * 2,
       }));
     };
@@ -92,6 +94,17 @@ export function ParticleField() {
         }
 
         const color = colorFor(particle);
+        if (particle.comet) {
+          const trail = 24 + Math.sin(time / 900 + particle.phase) * 10;
+          context.globalAlpha = particle.alpha * 0.42;
+          context.strokeStyle = color;
+          context.lineWidth = particle.radius * 0.7;
+          context.beginPath();
+          context.moveTo(particle.x, particle.y);
+          context.lineTo(particle.x - trail, particle.y - trail * 0.36);
+          context.stroke();
+        }
+
         if (particle.beacon) {
           const pulse = 7 + Math.sin(time / 720 + particle.phase) * 3;
           context.globalAlpha = 0.22;

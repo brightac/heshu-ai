@@ -217,35 +217,43 @@ export function PersonalSite({ language }: { language: Language }) {
       </header>
 
       <main id="top">
-        <section className="shell hero" aria-labelledby="hero-title">
-          <ParticleField />
-          <div className="hero-copy fade-up">
-            <p className="eyebrow">{copy.hero.eyebrow}</p>
-            <h1 id="hero-title">{copy.hero.title}<span className="gradient">{copy.hero.titleAccent}</span></h1>
-            <p className="intro"><strong>{copy.hero.introLead}</strong>. {copy.hero.intro}</p>
-            <a className="venture-note" href="#venture"><span aria-hidden="true">◈</span>{copy.hero.ventureNote}</a>
+        <section className="shell hero-poster" aria-labelledby="hero-title">
+          <div className="poster-media fade-up">
+            <img
+              className="hero-art"
+              src="/og.png"
+              alt={language === "zh" ? "贺叔 AI 与 Torchcast.AI、FFM 的星空主题主视觉" : "Heshu AI, Torchcast.AI, and FFM against a cinematic starfield"}
+              width="1200"
+              height="630"
+              fetchPriority="high"
+            />
+            <div className="poster-vignette" aria-hidden="true" />
+            <div className="starfield starfield-far" aria-hidden="true" />
+            <div className="starfield starfield-near" aria-hidden="true" />
+            <ParticleField />
+            <div className="light-orb light-orb-one" aria-hidden="true" />
+            <div className="light-orb light-orb-two" aria-hidden="true" />
+            <div className="hero-beam hero-beam-horizontal" aria-hidden="true" />
+            <div className="hero-beam hero-beam-diagonal" aria-hidden="true" />
+            <div className="poster-hud" aria-hidden="true">
+              <span>FFM / LIVE SIGNAL</span>
+              <i />
+              <span>35.6762° N</span>
+            </div>
+          </div>
+
+          <div className="hero-dock fade-up">
+            <div className="hero-dock-copy">
+              <p className="eyebrow">{copy.hero.eyebrow}</p>
+              <h1 id="hero-title" className="mobile-hero-title">{copy.hero.title}<span className="gradient">{copy.hero.titleAccent}</span></h1>
+              <p className="hero-dock-intro"><strong>{copy.hero.introLead}</strong>. {copy.hero.intro}</p>
+              <a className="venture-note" href="#venture"><span aria-hidden="true">◈</span>{copy.hero.ventureNote}</a>
+            </div>
             <div className="actions" aria-label={language === "zh" ? "主要行动" : "Primary actions"}>
               <a className="btn primary" href="mailto:cranelee@gmail.com?subject=Heshu%20AI">{copy.hero.primaryAction} <span aria-hidden="true">↗</span></a>
               <a className="btn secondary" href="#works">{copy.hero.secondaryAction} <span aria-hidden="true">↓</span></a>
             </div>
           </div>
-
-          <aside className="system-card fade-up" aria-label={copy.hero.cardAria}>
-            <div className="card-head"><span>{copy.hero.cardHeader}</span><span>{copy.hero.cardState}</span></div>
-            <div className="core">
-              <span className="node node-ai">{copy.hero.nodes[0]}</span>
-              <span className="node node-product">{copy.hero.nodes[1]}</span>
-              <span className="node node-compliance">{copy.hero.nodes[2]}</span>
-              <span className="node node-ops">{copy.hero.nodes[3]}</span>
-              <div className="portrait-core">
-                <img src="/heshu-avatar.jpg" alt="" width="1024" height="1024" />
-                <span>{copy.hero.coreTop} · {copy.hero.coreBottom}</span>
-              </div>
-            </div>
-            <div className="system-flow" aria-hidden="true">
-              {copy.hero.flow.map((item, index) => <div className="flow-row" key={item}><span>{item}</span><i /><b>0{index + 1}</b></div>)}
-            </div>
-          </aside>
         </section>
 
         <section className="metrics-wrap" aria-label={copy.metricsLabel}>
