@@ -1,9 +1,8 @@
 import Image from "next/image";
 import { ParticleField } from "./ParticleField";
+import { publicBase } from "../lib/public-base";
 
 type Language = "zh" | "en";
-
-const publicBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const content = {
   zh: {

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { publicBase } from "../../lib/public-base";
 import { PersonalSite } from "../PersonalSite";
 
 const title = "Heshu AI | The AI Gear Guide for Technical People";
 const description =
   "Only AI gear I have used—and whether it is worth installing. Field tests, OpenClaw workflows, and practical implementation products.";
-const publicBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://heshu-ai.cranelee.chatgpt.site";
 const pageUrl = `${siteOrigin}${publicBase}/en/`;
 const socialImage = `${siteOrigin}${publicBase}/og.png`;

@@ -19,6 +19,11 @@ npm run build
 
 仓库内的 GitHub Actions 会在 `main` 分支更新后自动执行静态导出，并部署到 GitHub Pages。
 
+- 根站：<https://brightac.github.io/>
+- 原项目地址：<https://brightac.github.io/heshu-ai/>
+
+同一份源码同时支持 GitHub 用户根站仓库 `brightac.github.io` 和普通项目仓库 `heshu-ai`：构建时会自动选择空路径或 `/heshu-ai` 前缀。
+
 ## 内容原则
 
 > 只讲我真用过的装备，只说值不值得装。
