@@ -27,3 +27,7 @@ npm run build
 - English: `/en/`
 - 微信：`heshu-AI`
 - Torchcast.AI: <https://torchcast.ai>
+
+## 开源产品
+
+- [Agent Review 内容三审工作流](./products/agent-review/README.md)：三个独立视角复核同一份内容，95 分以下不发布。

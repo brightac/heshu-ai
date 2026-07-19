@@ -25,6 +25,8 @@ test("renders the Chinese creator and product journey", async () => {
   assert.match(html, /AI Agent 落地答疑群/);
   assert.match(html, /¥199 \/ 年/);
   assert.match(html, /预售 30 人开群/);
+  assert.match(html, /三个 Agent 独立审/);
+  assert.match(html, /95 分以下不发布/);
   assert.match(html, /heshu-AI/);
   assert.match(html, /Torchcast\.AI/);
   assert.doesNotMatch(html, /李贺/);
@@ -39,5 +41,7 @@ test("renders the English route with the same product facts", async () => {
   assert.match(html, /AI Agent Implementation Q&amp;A|AI Agent Implementation Q&A/);
   assert.match(html, /RMB 199 \/ YEAR/);
   assert.match(html, /opens at 30 presales/i);
+  assert.match(html, /Three independent reviews/);
+  assert.match(html, /Nothing ships below 95/);
   assert.match(html, /Forecast Foundation Model/);
 });

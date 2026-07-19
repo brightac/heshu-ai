@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const title = "贺叔 AI｜技术人的 AI 装备师";
 const description =
-  "只讲真用过的 AI 装备，只说值不值得装。真实评测、OpenClaw 工作流，以及从免费开源到落地答疑的产品。";
+  "只讲真用过的 AI 装备，只说值不值得装。真实评测、OpenClaw 工作流、Agent Review 95 分发布闸门，以及从免费开源到落地答疑的产品。";
 const publicBase = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://heshu-ai.cranelee.chatgpt.site";
 const siteUrl = `${siteOrigin}${publicBase}/`;

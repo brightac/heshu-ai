@@ -85,6 +85,15 @@ const content = {
           featured: false,
         },
       ],
+      agentReview: {
+        label: "NEW / AGENT REVIEW",
+        title: "三个 Agent 独立审，95 分以下不发布。",
+        description: "同一份文章、视频或落地页，分别检查商业闭环、传播表达和真实可信；不只给分，还要给可以直接替换的文案，再复审到过线。",
+        tags: ["三路独立意见", "逐条替换文案", "95 分发布闸门"],
+        meta: "已纳入 ¥0 开源 Skills · ¥199 答疑群 · ¥1,999 工作坊",
+        action: "看开源工作流",
+        href: "https://github.com/brightac/heshu-ai/tree/main/products/agent-review",
+      },
       privateTitle: "需要一对一共创？",
       privateText: "目前仅申请制，一次只跑 1 个真实目标：工作流自动化、Side Project 或 AI 自媒体流水线。卖技能，不承诺涨粉或收入结果。",
       privateAction: "申请共创",
@@ -221,6 +230,15 @@ const content = {
           featured: false,
         },
       ],
+      agentReview: {
+        label: "NEW / AGENT REVIEW",
+        title: "Three independent reviews. Nothing ships below 95.",
+        description: "The same article, video, or landing page is checked for commercial logic, audience impact, and real-world credibility. Each reviewer must provide exact replacement copy before a second pass.",
+        tags: ["Independent lenses", "Paste-ready fixes", "95-point release gate"],
+        meta: "Included across Open-source Skills · RMB 199 Q&A · RMB 1,999 Workshop",
+        action: "Open the workflow",
+        href: "https://github.com/brightac/heshu-ai/tree/main/products/agent-review",
+      },
       privateTitle: "Need one-to-one co-building?",
       privateText: "Application only. I take one real objective at a time: workflow automation, a side project, or an AI content system. I sell implementation skill—not growth or income promises.",
       privateAction: "Apply to co-build",
@@ -373,6 +391,18 @@ export function PersonalSite({ language }: { language: Language }) {
                 </article>
               ))}
             </div>
+            <article className="agent-review-offer">
+              <div className="agent-review-copy">
+                <span>{copy.products.agentReview.label}</span>
+                <h3>{copy.products.agentReview.title}</h3>
+                <p>{copy.products.agentReview.description}</p>
+                <ul>{copy.products.agentReview.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+              </div>
+              <div className="agent-review-action">
+                <p>{copy.products.agentReview.meta}</p>
+                <a className="btn secondary" href={copy.products.agentReview.href} target="_blank" rel="noreferrer">{copy.products.agentReview.action} <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
             <aside className="private-offer">
               <div><span>ONE-TO-ONE / APPLICATION ONLY</span><h3>{copy.products.privateTitle}</h3><p>{copy.products.privateText}</p></div>
               <a className="btn secondary" href="#contact">{copy.products.privateAction} <span aria-hidden="true">↗</span></a>
