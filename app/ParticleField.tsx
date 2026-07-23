@@ -63,9 +63,9 @@ export function ParticleField() {
     let running = false;
 
     const colorFor = (particle: Particle) => {
-      if (particle.color === "blue") return "#4b7cff";
-      if (particle.color === "mint") return "#8dffda";
-      return "#50f2ff";
+      if (particle.color === "blue") return "#ffa84b";
+      if (particle.color === "mint") return "#ffe48d";
+      return "#ffc550";
     };
 
     const makeParticles = () => {
@@ -102,7 +102,7 @@ export function ParticleField() {
         const baseline = height * (0.25 + track * 0.2);
         const amplitude = 12 + track * 5;
         context.globalAlpha = 0.08 + track * 0.018;
-        context.strokeStyle = track === 1 ? "#4b7cff" : "#50f2ff";
+        context.strokeStyle = track === 1 ? "#ffa84b" : "#ffc550";
         context.lineWidth = track === 0 ? 1.1 : 0.7;
         context.beginPath();
         for (let x = -20; x <= width + 20; x += 12) {
@@ -125,7 +125,7 @@ export function ParticleField() {
           ? `${(42 + Math.sin(time / 1500 + fragment.phase) * 7).toFixed(1)}%`
           : fragment.text;
         context.globalAlpha = fragment.alpha;
-        context.fillStyle = fragment.text.includes("AI") ? "#8dffda" : fragment.text.includes("Δ") ? "#8f7cff" : "#78dbe7";
+        context.fillStyle = fragment.text.includes("AI") ? "#ffe48d" : fragment.text.includes("Δ") ? "#ffb37c" : "#e7c178";
         context.font = `500 ${fragment.size}px monospace`;
         context.fillText(liveText, fragment.x, floatY);
       }
@@ -141,7 +141,7 @@ export function ParticleField() {
           if (distanceSquared < CONNECTION_DISTANCE * CONNECTION_DISTANCE) {
             const distance = Math.sqrt(distanceSquared);
             context.globalAlpha = (1 - distance / CONNECTION_DISTANCE) * 0.34;
-            context.strokeStyle = i % 3 === 0 ? "#4b7cff" : "#50f2ff";
+            context.strokeStyle = i % 3 === 0 ? "#ffa84b" : "#ffc550";
             context.lineWidth = 0.7;
             context.beginPath();
             context.moveTo(first.x, first.y);

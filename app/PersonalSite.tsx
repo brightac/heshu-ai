@@ -14,10 +14,10 @@ const content = {
     languageAria: "Switch to English",
     status: "微信预售",
     hero: {
-      eyebrow: "AI 装备实测 · 工作流拆解 · 一人公司实战",
-      title: "技术人的",
-      titleAccent: "AI 装备师",
-      mantra: "只讲我真用过的装备，只说值不值得装。",
+      eyebrow: "Codex · Claude · Forecast · FFM",
+      title: "玩AI，",
+      titleAccent: "或者被AI玩",
+      mantra: "一个工程师的 AI 日常。",
       intro:
         "机器、模型、云端、本地，我先跑过，再告诉你什么值得买、什么只是贵。",
       proof: "三平台累计 84 万+｜单条 51.4 万｜4,409 次分享｜23 条实测",
@@ -102,7 +102,7 @@ const content = {
       title: "每条内容，都要帮你做一个决定。",
       items: [
         ["GEAR / 01", "帮你选装备", "机器、模型、云端和本地方案，我先跑一遍，再告诉你什么值得买、什么只是贵。"],
-        ["WORKFLOW / 02", "带你跑通工作流", "OpenClaw、Claude Code、Codex 与 AI Skills，关键步骤留在画面里，不靠剪辑制造魔法。"],
+        ["WORKFLOW / 02", "带你跑通工作流", "Codex、Claude、Forecast 与 FFM，关键步骤留在画面里，不靠剪辑制造魔法。"],
         ["FIELD NOTE / 03", "替你先踩坑", "成本、性能、稳定性、隐私和维护负担都算进答案；Demo 结束，真实使用才开始。"],
       ],
     },
@@ -110,7 +110,7 @@ const content = {
       label: "About / 认识我",
       title: "我不是 AI 原住民，是一路做系统的人。",
       paragraphs: [
-        "40+，做了近 20 年系统、产品和技术管理，也踩过机器、云账单和工作流的坑。贺叔 AI 做的事很简单：把这些坑公开，让后来的人少交一次学费。",
+        "做了近 20 年系统、产品和技术管理，也踩过机器、云账单和工作流的坑。贺叔 AI 做的事很简单：把这些坑公开，让后来的人少交一次学费。",
         "我不贩卖“跟不上 AI”的焦虑。我的标准只有三个：真用过、真演示、能帮你做决定。",
       ],
     },
@@ -160,10 +160,10 @@ const content = {
     languageAria: "切换到中文",
     status: "JOIN PRESALE",
     hero: {
-      eyebrow: "FIELD-TESTED AI GEAR · REAL WORKFLOWS · SOLO BUILDING",
-      title: "The AI gear guide",
-      titleAccent: "for technical people",
-      mantra: "I only cover gear I have used—and whether it is worth installing.",
+      eyebrow: "Codex · Claude · Forecast · FFM",
+      title: "Play with AI,",
+      titleAccent: "before it plays you",
+      mantra: "An engineer's daily life with AI.",
       intro: "Machines, models, cloud, or local: I run it first, then tell you what is worth buying and what is merely expensive.",
       proof: "840K+ cross-platform views｜514K top video｜4,409 shares｜23 field tests",
       productNote: "RMB 199 / year · AI Agent implementation Q&A · opens at 30 presales",
@@ -247,7 +247,7 @@ const content = {
       title: "Every piece should help you make a decision.",
       items: [
         ["GEAR / 01", "Choose the right gear", "I run machines, models, cloud setups, and local stacks before saying what is worth buying—and what is merely expensive."],
-        ["WORKFLOW / 02", "See the real workflow", "OpenClaw, Claude Code, Codex, and AI Skills, with the important steps left visible instead of edited into magic."],
+        ["WORKFLOW / 02", "See the real workflow", "Codex, Claude, Forecast, and FFM, with the important steps left visible instead of edited into magic."],
         ["FIELD NOTE / 03", "Learn from the failures", "Cost, performance, stability, privacy, and maintenance all count. Real use begins where the polished demo ends."],
       ],
     },
@@ -255,7 +255,7 @@ const content = {
       label: "About / Field Notes",
       title: "Not AI-native. System-native.",
       paragraphs: [
-        "I am 40+ with nearly two decades across engineering, product, and technology leadership. I have paid for the wrong machines, surprising cloud bills, and brittle workflows. Heshu AI makes those mistakes public so the next builder can skip one.",
+        "I have spent nearly two decades across engineering, product, and technology leadership. I have paid for the wrong machines, surprising cloud bills, and brittle workflows. Heshu AI makes those mistakes public so the next builder can skip one.",
         "I do not sell anxiety about falling behind. My standard is simple: use it, show it, and help someone decide.",
       ],
     },
